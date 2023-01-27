@@ -4,15 +4,15 @@ import { BsArrowLeftShort, BsSearch, BsChevronDown } from "react-icons/bs";
 import { AiFillEnvironment } from "react-icons/ai";
 import { MdDashboard } from "react-icons/md";
 import { Menu } from "../../pages/api/fackApi";
+import Link from "next/link";
 function SideBar() {
   const [showNav, setShowNav] = useState(true);
   const [subMenuItem, setSubMenuItem] = useState(false);
-console.log(Menu,"Menu")
+  console.log(Menu, "Menu");
   return (
     <>
-    
       <div
-        className={`bg-blue-900 h-screen p-5 pt-8 ${
+        className={`bg-blue-900 dark:bg-black dark:text-white  h-screen overflow-scroll p-5 pt-8 ${
           showNav ? "w-72" : "w-20"
         } relative duration-75`}
       >
@@ -20,7 +20,7 @@ console.log(Menu,"Menu")
           onClick={() => setShowNav(!showNav)}
           className={`bg-white text-black ${
             showNav ? "" : "rotate-180 "
-          } text-3xl rounded-full border border-[black] cursor-pointer absolute -right-3 top-9`}
+          } text-3xl rounded-full border  border-[black] cursor-pointer absolute -right-1 top-9`}
         />
         <div className="inline-flex">
           <AiFillEnvironment
@@ -58,28 +58,30 @@ console.log(Menu,"Menu")
           <ul className="pt-2">
             {Menu.map((item, index) => (
               <>
-                <li
-                  className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-green-300 rounded-md ${
-                    item.spacing ? "mt-9" : "mt-2"
-                  }`}
-                >
-                  <span className="text-2xl block float-left">
-                    {item.icon ? item.icon : <MdDashboard />}
-                  </span>
-                  <span
-                    className={`text-base font-medium flex-1 duration-200 ${
-                      !showNav && "hidden"
+                <Link href={item.path}>
+                  <li
+                    className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-green-300 rounded-md ${
+                      item.spacing ? "mt-9" : "mt-2"
                     }`}
                   >
-                    {item.title}
-                  </span>
-                  {item.submenu && showNav && (
-                    <BsChevronDown
-                      className={`${subMenuItem && "rotate-180"}`}
-                      onClick={() => setSubMenuItem(!subMenuItem)}
-                    />
-                  )}
-                </li>
+                    <span className="text-2xl block float-left">
+                      {item.icon ? item.icon : <MdDashboard />}
+                    </span>
+                    <span
+                      className={`text-base font-medium flex-1 duration-200 ${
+                        !showNav && "hidden"
+                      }`}
+                    >
+                      {item.title}
+                    </span>
+                    {item.submenu && showNav && (
+                      <BsChevronDown
+                        className={`${subMenuItem && "rotate-180"}`}
+                        onClick={() => setSubMenuItem(!subMenuItem)}
+                      />
+                    )}
+                  </li>
+                </Link>
                 {item.submenu && subMenuItem && showNav && (
                   <ul>
                     {item.submenuItems.map((item2, index) => (

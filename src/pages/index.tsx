@@ -1,18 +1,22 @@
+import Deshboard from "@/components/deshboard/deshboard";
 import SideBar from "@/components/sidebar/sidebar";
+import TopBar from "@/components/topbar/topbar";
 import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ children }: any) {
+export default function Home() {
   return (
     <div className="flex">
       <div>
         <SideBar />
       </div>
-      <div className="p-7">
-        <h1 className="text-2xl font-semibold">Home</h1>
+      <div className=" w-full">
+        <div className="bg-red-500">
+          <TopBar />
+        </div>
+        <Deshboard />
       </div>
-      <main>{children}</main>
     </div>
   );
 }
