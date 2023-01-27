@@ -1,21 +1,12 @@
+import { useTheme } from "next-themes";
 import React from "react";
 import { FaBars } from "react-icons/fa";
-function TopBar(props: any) {
-  const { setShowNav, showNav } = props;
+function TopBar() {
+  const { theme, setTheme } = useTheme();
 
   return (
-    <div
-      className={`fixed  w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
-        showNav ? "pl-56" : ""
-      }`}
-    >
-      <div className="pl-4 md:pl-16">
-        <FaBars
-          className="h-8 w-8 text-gray-700 cursor-pointer"
-          onClick={() => setShowNav(!showNav)}
-        />
-      </div>
-      
+    <div>
+      <button onClick={()=> setTheme(theme === "light" ?"dark" :"light")} className="px-6 py-2  bg-black dark:bg-white text-white dark:text-black">dark</button>
     </div>
   );
 }
