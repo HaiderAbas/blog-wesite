@@ -39,6 +39,7 @@ export const Menu = [
     title: "UI Elements",
     submenu: true,
     submenuItems: [
+      { title: "Table", path: "/Table" },
       { title: "Button", path: "/" },
       { title: "Cards", path: "/" },
       { title: "Carousel", path: "/" },

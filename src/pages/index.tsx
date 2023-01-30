@@ -9,12 +9,9 @@ export default function Home() {
   return (
     <div className="flex">
       <div>
-        <SideBar />
+        <SideBar/>
       </div>
       <div className=" w-full">
-        <div className="bg-red-500">
-          <TopBar />
-        </div>
         <Deshboard />
       </div>
     </div>
