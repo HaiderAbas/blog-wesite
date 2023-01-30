@@ -12,7 +12,7 @@ function SideBar() {
   return (
     <>
       <div
-        className={`bg-blue-900 dark:bg-black dark:text-white  h-screen overflow-scroll p-5 pt-8 ${
+        className={`bg-blue-900 dark:bg-black dark:text-white overflow-x-hidden	  h-screen overflow-scroll p-5 pt-8 ${
           showNav ? "w-72" : "w-20"
         } relative duration-75`}
       >
@@ -86,13 +86,15 @@ function SideBar() {
                   <ul>
                     {item.submenuItems.map((item2, index) => (
                       <>
-                        <li
-                          className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-green-300 rounded-md ${
-                            item.spacing ? "mt-9" : "mt-2"
-                          }`}
-                        >
-                          {item2.title}
-                        </li>
+                        <Link href={item2.path}>
+                          <li
+                            className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-green-300 rounded-md ${
+                              item.spacing ? "mt-9" : "mt-2"
+                            }`}
+                          >
+                            {item2.title}
+                          </li>
+                        </Link>
                       </>
                     ))}
                   </ul>
